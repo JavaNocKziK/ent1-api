@@ -1,0 +1,18 @@
+{
+  "name": "@javanockzik/ent1-api",
+  "version": "1.0.0",
+  "description": "API for the first Enterprise Programming assignment.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Aubrey Boorer",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "mongoose": "^5.0.0-rc2",
+    "xml-js": "^1.6.2",
+    "xmlbuilder": "^9.0.4"
+  }
+}
