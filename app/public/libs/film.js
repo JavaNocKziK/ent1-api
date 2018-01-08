@@ -5,20 +5,38 @@ module.exports = {
      * Cast to XML.
      */
     toXml: (input) => {
-        let xml = builder.create('films');
-        JSON.parse(input).forEach((e) => {
-            let item = xml.ele('film');
-            item.att('id', e._id);
-            item.ele('title', e.title);
-            item.ele('year', e.year);
-            item.ele('director', e.director);
-            item.ele('cast', e.cast);
-            item.ele('review', e.review);
-        });
-        xml.end({
-            pretty: true
-        });
-        return xml.toString();
+        let xml = undefined;
+        if(input instanceof Array) {
+            // Array.
+            xml = builder.create('films');
+            JSON.parse(input).forEach((e) => {
+                let item = xml.ele('film');
+                item.att('id', e._id);
+                item.ele('title', e.title);
+                item.ele('year', e.year);
+                item.ele('director', e.director);
+                item.ele('cast', e.cast);
+                item.ele('review', e.review);
+            });
+        } else {
+            // Singleton.
+            let json = JSON.parse(input);
+            xml = builder.create('film');
+            xml.att('id', json._id);
+            xml.ele('title', json.title);
+            xml.ele('year', json.year);
+            xml.ele('director', json.director);
+            xml.ele('cast', json.cast);
+            xml.ele('review', json.review);
+        }
+        if(xml === undefined) {
+            return '';
+        } else {
+            xml.end({
+                pretty: true
+            });
+            return xml.toString();
+        }
     },
 
     /**
