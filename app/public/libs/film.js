@@ -8,8 +8,9 @@ module.exports = {
         let xml = undefined;
         if(input instanceof Array) {
             // Array.
+            let json = JSON.stringify(input);
             xml = builder.create('films');
-            JSON.parse(input).forEach((e) => {
+            JSON.parse(json).forEach((e) => {
                 let item = xml.ele('film');
                 item.att('id', e._id);
                 item.ele('title', e.title);
@@ -44,7 +45,8 @@ module.exports = {
      */
     toTab: (input) => {
         let tab = '';
-        JSON.parse(input).forEach((e) => {
+        let json = JSON.stringify(input);
+        JSON.parse(json).forEach((e) => {
             for(let key in e) {
                 if(e.hasOwnProperty(key)) {
                     // Replace all tabs.
@@ -64,7 +66,8 @@ module.exports = {
      */
     toCsv: (input) => {
         let csv = '';
-        JSON.parse(input).forEach((e) => {
+        let json = JSON.stringify(input);
+        JSON.parse(json).forEach((e) => {
             for(let key in e) {
                 if(e.hasOwnProperty(key)) {
                     // Escape all double quotes.

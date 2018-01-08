@@ -56,15 +56,15 @@ module.exports = {
                         switch(options.format) {
                             case `tab`:
                                 contentType = `text/plain`;
-                                contentData = FilmLib.toTab(JSON.stringify(data));
+                                contentData = FilmLib.toTab(data);
                                 break;
                             case `csv`:
                                 contentType = `text/csv`;
-                                contentData = FilmLib.toCsv(JSON.stringify(data));
+                                contentData = FilmLib.toCsv(data);
                                 break;
                             case `xml`:
                                 contentType = `application/xml`;
-                                contentData = FilmLib.toXml(JSON.stringify(data));
+                                contentData = FilmLib.toXml(data);
                                 break;
                             case null:
                             case undefined:
@@ -107,15 +107,15 @@ module.exports = {
                         switch(options.format) {
                             case `tab`:
                                 contentType = `text/plain`;
-                                contentData = FilmLib.toTab(JSON.stringify(data));
+                                contentData = FilmLib.toTab(data);
                                 break;
                             case `csv`:
                                 contentType = `text/csv`;
-                                contentData = FilmLib.toCsv(JSON.stringify(data));
+                                contentData = FilmLib.toCsv(data);
                                 break;
                             case `xml`:
                                 contentType = `application/xml`;
-                                contentData = FilmLib.toXml(JSON.stringify(data));
+                                contentData = FilmLib.toXml(data);
                                 break;
                             case null:
                             case undefined:
