@@ -1,19 +1,8 @@
 const express = require('express');
 const xmljs = require('xml-js');
-
 const router = express.Router();
-const Film = require('../models/film');
-const FilmLib = require('../public/libs/film');
-const Mdb = require('../controllers/mongodb');
 
-let error = (res, msg) => {
-    if(msg) {
-        console.error(msg);
-        res.send(msg);
-        return true;
-    }
-    return false;
-}
+const Mdb = require('../controllers/mongodb');
 
 /**
  * All operations for /films
@@ -35,8 +24,13 @@ router.route('/')
         });
     })
     .post((req, res) => {
-        Mdb.films.add(req.body)
-        .then((data) => {
+        Mdb.films.add({
+            title: req.body.title,
+            year: req.body.year,
+            director: req.body.director,
+            cast: req.body.cast,
+            review: req.body.review
+        }).then((data) => {
             res.set('Content-Type', data.contentType);
             res.send(data.contentData);
         }).catch((data) => {

@@ -43,7 +43,6 @@ module.exports = {
                 let contentData = ``;
                 let exception = undefined;
                 let query = Film.find();
-                console.log(params);
                 if(params.title) {
                     query.where('title').regex(new RegExp(params.title, 'gi'));
                 }
