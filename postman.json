@@ -1,0 +1,219 @@
+{
+	"info": {
+		"name": "Enterprise Programming (Assignment #1)",
+		"_postman_id": "bdaca7d3-cd9d-ed4d-ad3b-9e76a36d765b",
+		"description": "A collection of requests and tests for the API that is a part of the first assignment for Enterprise Programming.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8200/films",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bb0bef62-8621-400e-b0d9-c5f4edcc3a86",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Dumb and Dumber",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8200/films",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8200",
+					"path": [
+						"films"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "redux",
+							"equals": true,
+							"disabled": true
+						},
+						{
+							"key": "year",
+							"value": "2018",
+							"equals": true,
+							"disabled": true
+						},
+						{
+							"key": "director",
+							"value": "joe loggs",
+							"equals": true,
+							"disabled": true
+						}
+					]
+				},
+				"description": "Get a list of films from the database."
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8200/films",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "title",
+							"value": "Movie Title",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "year",
+							"value": "2018",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "director",
+							"value": "Best Director",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "cast",
+							"value": "Average Actor, Excellent Actor",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "review",
+							"value": "It was... meh.",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8200/films",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8200",
+					"path": [
+						"films"
+					]
+				},
+				"description": "Used to add a new film to the database. Submit your film data into the body providing title, year, director, cast and review as your values. Should send in a JSON format."
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8200/films/:id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8200/films/{{id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8200",
+					"path": [
+						"films",
+						"{{id}}"
+					]
+				},
+				"description": "Get a film's data by ID. Replace the ID in the last section of the URL to get a different film."
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8200/films/:id",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "director",
+							"value": "Joe Frogs",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8200/films/{{id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8200",
+					"path": [
+						"films",
+						"{{id}}"
+					]
+				},
+				"description": "Update a film's data."
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8200/films/:id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8200/films/{{id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8200",
+					"path": [
+						"films",
+						"{{id}}"
+					]
+				},
+				"description": "Delete a film by its ID."
+			},
+			"response": []
+		}
+	]
+}
