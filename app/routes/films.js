@@ -35,19 +35,13 @@ router.route('/')
         });
     })
     .post((req, res) => {
-        let film = new Film();
-        film.title = (req.body.title === undefined ? '' : req.body.title);
-        film.year = (req.body.year === undefined ? '' : req.body.year);
-        film.director = (req.body.director === undefined ? '' : req.body.director);
-        film.cast = (req.body.cast === undefined ? '' : req.body.cast);
-        film.review = (req.body.review === undefined ? '' : req.body.review);
-        film.save((err) => {
-            if(!error(res, err)) {
-                res.json({
-                    message: `Generated new film successfully.`,
-                    data: req.body
-                });
-            }
+        Mdb.films.add(req.body)
+        .then((data) => {
+            res.set('Content-Type', data.contentType);
+            res.send(data.contentData);
+        }).catch((data) => {
+            res.set('Content-Type', data.contentType);
+            res.send(data.contentData);
         });
     });
 

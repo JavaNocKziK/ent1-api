@@ -4,6 +4,37 @@ const FilmLib = require('../public/libs/film');
 module.exports = {
     films: {
         /**
+         * Add new film.
+         */
+        add: (params) => {
+            return new Promise((accept, reject) => {
+                let contentType = `application/json`;
+                let contentData = ``;
+                let film = new Film();
+                film.title = (params.title === undefined ? '' : params.title);
+                film.year = (params.year === undefined ? '' : params.year);
+                film.director = (params.director === undefined ? '' : params.director);
+                film.cast = (params.cast === undefined ? '' : params.cast);
+                film.review = (params.review === undefined ? '' : params.review);
+                film.save((err) => {
+                    if(err) {
+                        reject({
+                            contentType: contentType,
+                            contentData: ({ error: 'Error adding new film.' })
+                        });
+                    } else {
+                        accept({
+                            contentType: contentType,
+                            contentData: {
+                                message: `Generated new film successfully.`,
+                                data: params
+                            }
+                        });
+                    }
+                });
+            });
+        },
+        /**
          * List all films.
          */
         list: (options, params) => {
@@ -23,7 +54,7 @@ module.exports = {
                     if(err) {
                         exception = { error: `Database error.` };
                     } else {
-                        switch(format) {
+                        switch(options.format) {
                             case `tab`:
                                 contentType = `text/plain`;
                                 contentData = FilmLib.toTab(JSON.stringify(data));
