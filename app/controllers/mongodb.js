@@ -170,12 +170,18 @@ module.exports = {
                             if(err) {
                                 reject({
                                     contentType: contentType,
-                                    contentData: { error: `Error updating film.` }
+                                    contentData: {
+                                        success: false,
+                                        message: `Error updating film.`
+                                    }
                                 });
                             } else {
                                 accept({
                                     contentType: contentType,
-                                    contentData: { success: 'Film data updated.' }
+                                    contentData: {
+                                        success: true,
+                                        message: 'Film data updated.'
+                                    }
                                 });
                             }
                         });
@@ -197,12 +203,18 @@ module.exports = {
                     if(err) {
                         reject({
                             contentType: contentType,
-                            contentData: { error: `Error deleting film.` }
+                            contentData: {
+                                success: false,
+                                message: `Error deleting film.`
+                            }
                         });
                     } else {
                         accept({
                             contentType: contentType,
-                            contentData: { success: 'Film deleted.' }
+                            contentData: {
+                                success: true,
+                                message: `Film deleted.`
+                            }
                         });
                     }
                 });

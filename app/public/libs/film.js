@@ -21,7 +21,7 @@ module.exports = {
             });
         } else {
             // Singleton.
-            let json = JSON.parse(input);
+            let json = input;
             xml = builder.create('film');
             xml.att('id', json._id);
             xml.ele('title', json.title);
