@@ -20,14 +20,17 @@ module.exports = {
                     if(err) {
                         reject({
                             contentType: contentType,
-                            contentData: ({ error: 'Error adding new film.' })
+                            contentData: {
+                                success: false,
+                                message: 'Error adding film.'
+                            }
                         });
                     } else {
                         accept({
                             contentType: contentType,
                             contentData: {
-                                message: `Generated new film successfully.`,
-                                data: params
+                                success: true,
+                                message: 'Generated film.'
                             }
                         });
                     }

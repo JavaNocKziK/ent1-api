@@ -7,8 +7,8 @@ const filmroutes = require('./app/routes/films');
 const app = express();
 const port = process.env.PORT || 8200;
 
-//mongoose.connect('mongodb://ent1admin:67YraCgjvE7u4gE6@ds135817.mlab.com:35817/uni3-ent1');
-mongoose.connect('mongodb://localhost:27017/');
+mongoose.connect('mongodb://ent1admin:67YraCgjvE7u4gE6@ds135817.mlab.com:35817/uni3-ent1');
+//mongoose.connect('mongodb://localhost:27017/');
 
 const CORS = (req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
@@ -18,7 +18,7 @@ const CORS = (req, res, next) => {
     next();
 }
 
-app.use(CORS);
+//app.use(CORS);
 
 app.use(bodyParser.urlencoded(
     {
