@@ -10,6 +10,9 @@ const port = process.env.PORT || process.argv[2] || 8200;
 mongoose.connect('mongodb://ent1admin:67YraCgjvE7u4gE6@ds135817.mlab.com:35817/uni3-ent1');
 //mongoose.connect('mongodb://localhost:27017/');
 
+// Load the static Angular files.
+app.use(express.static(path.join(__dirname, 'dist')));
+
 // Set CORS to allow all remote addresses to access our API.
 const CORS = (req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
