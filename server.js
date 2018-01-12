@@ -33,5 +33,10 @@ app.use(bodyParser.urlencoded(
 app.use(bodyParser.json());
 app.use('/films', filmroutes);
 
+// Send all requests to our dist.
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'dist/index.html'));
+});
+
 app.listen(port);
 console.log(`Listening on ${port}...`);
